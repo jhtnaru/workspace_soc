@@ -1,0 +1,58 @@
+# Ignore build output directory
+/build
+/export
+
+# Ignore object files and dependent files
+.o
+.d
+
+#Ignore logs folder and log files
+/logs
+.log
+
+#Ignore lock files
+.lock
+
+.bin
+.pdi
+.vitisWorkspace.json
+
+_ide/logs
+_ide/.wsdata
+
+# 빌드 디렉토리
+Debug/
+Release/
+_build/
+.build/
+*.o
+*.a
+*.elf
+*.map
+*.log
+
+# Vitis/SDK 메타데이터
+.metadata/
+.sdk/
+.settings/
+.hw/
+.xpr/
+.iprepo/
+.cache/
+
+# Vivado와 연결 시 생성되는 파일
+*.runs/
+*.jou
+*.str
+*.wdb
+*.dcp
+
+# 백업/임시 파일
+*~
+*.tmp
+*.bak
+*.swp
+
+# OS별 불필요 파일
+.DS_Store
+Thumbs.db
