@@ -1,6 +1,6 @@
-#line 1 "../platform_led_sw/hw/sdt/system-top.dts"
+#line 1 "../platform_ultrasonic/hw/sdt/system-top.dts"
 /dts-v1/;
-#line 1 "../platform_led_sw/hw/sdt/pl.dtsi"
+#line 1 "../platform_ultrasonic/hw/sdt/pl.dtsi"
 / {
 	cpus_microblaze_riscv_0: cpus_microblaze_riscv@0 {
 		#cpu-mask-cells = <1>;
@@ -17,7 +17,7 @@
 			xlnx,rable = <0>;
 			xlnx,temporal-depth = <0>;
 			xlnx,use-interrupt = <0>;
-			xlnx,optimization = <0>;
+			xlnx,optimization = <1>;
 			xlnx,ip-axi-mon = <0>;
 			d-cache-highaddr = <0x3fffffff>;
 			xlnx,ip-name = "microblaze_riscv";
@@ -39,8 +39,8 @@
 			xlnx,part = "xc7a35tcpg236-1";
 			xlnx,use-config-reset = <0>;
 			xlnx,i-lmb-mon = <0>;
-			xlnx,dcache-byte-size = <8192>;
-			xlnx,ill-instr-exception = <2>;
+			xlnx,dcache-byte-size = <4096>;
+			xlnx,ill-instr-exception = <1>;
 			compatible = "xlnx,microblaze-riscv-1.0" , "xlnx,microblaze_riscv";
 			xlnx,data-size = <32>;
 			xlnx,fault-tolerant = <0>;
@@ -73,7 +73,7 @@
 			xlnx,edk-special = "microblaze_riscv";
 			xlnx,use-dcache = <0>;
 			xlnx,use-barrel = <1>;
-			xlnx,use-muldiv = <0>;
+			xlnx,use-muldiv = <2>;
 			xlnx,addr-size = <32>;
 			xlnx,debug-external-trace = <0>;
 			xlnx,piaddr-size = <32>;
@@ -83,7 +83,7 @@
 			xlnx,debug-event-counters = <0>;
 			xlnx,use-atomic = <0>;
 			xlnx,i-axi = <0>;
-			xlnx,g-template-list = <0>;
+			xlnx,g-template-list = <1>;
 			xlnx,icache-streams = <0>;
 			xlnx,dcache-line-len = <4>;
 			xlnx,num-sync-ff-clk = <2>;
@@ -93,17 +93,17 @@
 			xlnx,hartid = <0x0>;
 			xlnx,debug-latency-counters = <0>;
 			xlnx,use-fpu = <0>;
-			xlnx,icache-byte-size = <8192>;
+			xlnx,icache-byte-size = <4096>;
 			xlnx,edge-is-positive = <1>;
 			xlnx,use-icache = <0>;
-			d-cache-size = <8192>;
+			d-cache-size = <4096>;
 			xlnx,memory-ip-list = "microblaze_riscv_0_local_memory_dlmb_bram_if_cntlr_memory" , "microblaze_riscv_0_local_memory_ilmb_bram_if_cntlr_memory";
 			xlnx,async-wakeup = <3>;
 			xlnx,use-non-secure = <0>;
 			xlnx,s-axi = <0>;
 			xlnx,number-of-rd-addr-brk = <0>;
 			d-cache-baseaddr = <0x0>;
-			xlnx,use-compression = <0>;
+			xlnx,use-compression = <1>;
 			xlnx,avoid-primitives = <0>;
 			xlnx,use-counters = <1>;
 			xlnx,lockstep-slave = <0>;
@@ -154,35 +154,6 @@
 		compatible = "simple-bus";
 		#address-cells = <1>;
 		#size-cells = <1>;
-		axi_gpio_led_sw: gpio@40000000 {
-			xlnx,gpio-board-interface = "led_16bits";
-			compatible = "xlnx,axi-gpio-2.0" , "xlnx,xps-gpio-1.00.a";
-			xlnx,all-outputs = <1>;
-			#gpio-cells = <2>;
-			xlnx,gpio-width = <16>;
-			clock-frequency = <100000000>;
-			xlnx,rable = <0>;
-			xlnx,dout-default = <0x0>;
-			xlnx,is-dual = <1>;
-			xlnx,ip-name = "axi_gpio";
-			xlnx,tri-default-2 = <0xffffffff>;
-			reg = <0x40000000 0x10000>;
-			xlnx,all-inputs-2 = <1>;
-			clocks = <&clk_bus_0>;
-			xlnx,all-outputs-2 = <0>;
-			gpio-controller;
-			xlnx,interrupt-present = <0>;
-			xlnx,gpio2-board-interface = "dip_switches_16bits";
-			xlnx,edk-iptype = "PERIPHERAL";
-			xlnx,dout-default-2 = <0x0>;
-			status = "okay";
-			xlnx,gpio2-width = <16>;
-			clock-names = "s_axi_aclk";
-			xlnx,use-board-flow;
-			xlnx,tri-default = <0xffffffff>;
-			xlnx,name = "axi_gpio_led_sw";
-			xlnx,all-inputs = <0>;
-		};
 		axi_uartlite_0: serial@40600000 {
 			compatible = "xlnx,axi-uartlite-2.0" , "xlnx,xps-uartlite-1.00.a";
 			clock-frequency = <100000000>;
@@ -210,7 +181,7 @@
 			xlnx,ecc-onoff-register = <0>;
 			xlnx,ecc-onoff-reset-value = <1>;
 			xlnx,s-axi-ctrl-protocol = "AXI4LITE";
-			xlnx,mask = <0x40000000>;
+			xlnx,mask = <0x200000>;
 			xlnx,mask1 = <0x800000>;
 			xlnx,rable = <0>;
 			xlnx,mask2 = <0x800000>;
@@ -272,9 +243,20 @@
 			xlnx,bram-awidth = <32>;
 			xlnx,lmb-awidth = <32>;
 		};
+		myip_ultrasonic_0: myip_ultrasonic@44a00000 {
+			xlnx,rable = <0>;
+			xlnx,s00-axi-data-width = <32>;
+			compatible = "xlnx,myip-ultrasonic-1.0";
+			status = "okay";
+			xlnx,s00-axi-addr-width = <5>;
+			xlnx,ip-name = "myip_ultrasonic";
+			xlnx,edk-iptype = "PERIPHERAL";
+			reg = <0x44a00000 0x10000>;
+			xlnx,name = "myip_ultrasonic_0";
+		};
 	};
 };
-#line 3 "../platform_led_sw/hw/sdt/system-top.dts"
+#line 3 "../platform_ultrasonic/hw/sdt/system-top.dts"
 / {
 	board = "basys3";
 	compatible = "xlnx,basys3";
@@ -299,8 +281,8 @@
 	cpus_microblaze_riscv_0: cpus_microblaze_riscv@0 {
 		address-map = <0x00000000 &microblaze_riscv_0_local_memory_dlmb_bram_if_cntlr_memory 0x00000000 0x20000>,
 			      <0x00000000 &microblaze_riscv_0_local_memory_dlmb_bram_if_cntlr 0x00000000 0x20000>,
-			      <0x40000000 &axi_gpio_led_sw 0x40000000 0x10000>,
-			      <0x40600000 &axi_uartlite_0 0x40600000 0x10000>;
+			      <0x40600000 &axi_uartlite_0 0x40600000 0x10000>,
+			      <0x44a00000 &myip_ultrasonic_0 0x44a00000 0x10000>;
 		#ranges-address-cells = <0x1>;
 		#ranges-size-cells = <0x1>;
 	};

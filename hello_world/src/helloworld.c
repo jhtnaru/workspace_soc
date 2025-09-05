@@ -22,8 +22,7 @@
 #include "xil_printf.h"
 #include "sleep.h"
 
-int main()
-{
+int main() {
     init_platform();
 
     print("Hello World\n\r");
