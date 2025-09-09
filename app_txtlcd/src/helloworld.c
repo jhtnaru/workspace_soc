@@ -75,7 +75,10 @@ int main () {
     init_platform();
     print("Success Start txtlcd\n");
 
-    volatile unsigned int *txtlcd_inst = (volatile unsigned int *)TXTLCD_ADDR;    
+    volatile unsigned int *txtlcd_inst = (volatile unsigned int *)TXTLCD_ADDR;
+
+    // volatile unsigned int *DEVICE_ADDR = (volatile unsigned int *)TXTLCD_ADDR;
+    // volatile unsigned int *SEND_DATA = (volatile unsigned int *)TXTLCD_ADDR + 4;
 
     i2cLCD_Init(txtlcd_inst);
     moveCursor(0, 0, txtlcd_inst);
