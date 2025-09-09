@@ -1,6 +1,6 @@
-#line 1 "../platform_ultrasonic/hw/sdt/system-top.dts"
+#line 1 "../platform_keypad/hw/sdt/system-top.dts"
 /dts-v1/;
-#line 1 "../platform_ultrasonic/hw/sdt/pl.dtsi"
+#line 1 "../platform_keypad/hw/sdt/pl.dtsi"
 / {
 	cpus_microblaze_riscv_0: cpus_microblaze_riscv@0 {
 		#cpu-mask-cells = <1>;
@@ -243,20 +243,20 @@
 			xlnx,bram-awidth = <32>;
 			xlnx,lmb-awidth = <32>;
 		};
-		myip_ultrasonic_0: myip_ultrasonic@44a00000 {
+		myip_keypad_0: myip_keypad@44a00000 {
 			xlnx,rable = <0>;
 			xlnx,s00-axi-data-width = <32>;
-			compatible = "xlnx,myip-ultrasonic-1.0";
+			compatible = "xlnx,myip-keypad-1.0";
 			status = "okay";
 			xlnx,s00-axi-addr-width = <5>;
-			xlnx,ip-name = "myip_ultrasonic";
+			xlnx,ip-name = "myip_keypad";
 			xlnx,edk-iptype = "PERIPHERAL";
 			reg = <0x44a00000 0x10000>;
-			xlnx,name = "myip_ultrasonic_0";
+			xlnx,name = "myip_keypad_0";
 		};
 	};
 };
-#line 3 "../platform_ultrasonic/hw/sdt/system-top.dts"
+#line 3 "../platform_keypad/hw/sdt/system-top.dts"
 / {
 	board = "basys3";
 	compatible = "xlnx,basys3";
@@ -282,7 +282,7 @@
 		address-map = <0x00000000 &microblaze_riscv_0_local_memory_dlmb_bram_if_cntlr_memory 0x00000000 0x20000>,
 			      <0x00000000 &microblaze_riscv_0_local_memory_dlmb_bram_if_cntlr 0x00000000 0x20000>,
 			      <0x40600000 &axi_uartlite_0 0x40600000 0x10000>,
-			      <0x44a00000 &myip_ultrasonic_0 0x44a00000 0x10000>;
+			      <0x44a00000 &myip_keypad_0 0x44a00000 0x10000>;
 		#ranges-address-cells = <0x1>;
 		#ranges-size-cells = <0x1>;
 	};
