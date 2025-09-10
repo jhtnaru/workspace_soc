@@ -1,4 +1,5 @@
 [
+  "/home/user16/workspace_soc/platform_stop_watch/export/platform_stop_watch",
   "/home/user16/workspace_soc/platform_keypad/export/platform_keypad",
   "/home/user16/workspace_soc/platform_dht11_i2c/export/platform_dht11_i2c",
   "/home/user16/workspace_soc/platform_dht11/export/platform_dht11",
@@ -7,6 +8,6 @@
   "/home/user16/workspace_soc/platform_hello/export/platform_hello",
   "/home/user16/workspace_soc/platform_led_sw/export/platform_led_sw",
   "/home/user16/workspace_soc/platform_ultrasonic/export/platform_ultrasonic",
-  "/home/user16/workspace_soc/platform_stop_watch/export/platform_stop_watch",
-  "/home/user16/workspace_soc/platform_txtlcd/export/platform_txtlcd"
+  "/home/user16/workspace_soc/platform_txtlcd/export/platform_txtlcd",
+  "/home/user16/workspace_soc/platform_watch/export/platform_watch"
 ]

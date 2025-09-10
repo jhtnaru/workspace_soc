@@ -299,7 +299,7 @@
 			xlnx,s00-axi-data-width = <32>;
 			compatible = "xlnx,myip-stop-watch-1.0";
 			status = "okay";
-			xlnx,s00-axi-addr-width = <5>;
+			xlnx,s00-axi-addr-width = <6>;
 			xlnx,ip-name = "myip_stop_watch";
 			xlnx,edk-iptype = "PERIPHERAL";
 			reg = <0x44a00000 0x10000>;
