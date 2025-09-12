@@ -113,12 +113,12 @@ int main () {
     char lcd_sec[16], lcd_lap[16];
 
     uint8_t btn_value;
-    uint8_t bnt_prev = 0;
+    uint8_t btn_prev = 0;
     while (1) {
         btn_value = XGpio_DiscreteRead(&btn_inst, BTN_CHANNEL);
 
-        if (btn_value && !bnt_prev) {
-            bnt_prev = 1;
+        if (btn_value && !btn_prev) {
+            btn_prev = 1;
             if (btn_value == 0b0001) {
                 stopwatch_inst[0] = stopwatch_inst[0] ^ 0b0001;
             }
@@ -136,7 +136,7 @@ int main () {
             lcdString(lcd_lap);
         }
         else if (btn_value == 0) {
-            bnt_prev = 0;
+            btn_prev = 0;
             stopwatch_inst[0] = stopwatch_inst[0] & 0b1001;
         }
 

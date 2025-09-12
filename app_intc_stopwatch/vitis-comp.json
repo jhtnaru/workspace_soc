@@ -1,0 +1,16 @@
+{
+  "name": "app_intc_stopwatch",
+  "type": "HOST",
+  "platform": "platform_intc_stopwatch",
+  "domain": "standalone_microblaze_riscv_0",
+  "cpuInstance": "microblaze_riscv_0",
+  "cpuType": "microblaze_riscv",
+  "os": "standalone",
+  "configuration": {
+    "componentType": "HOST",
+    "hostToolchainConfigurations": []
+  },
+  "domainRealName": "standalone_microblaze_riscv_0",
+  "applicationFlow": "EMBEDDED",
+  "template": "hello_world"
+}

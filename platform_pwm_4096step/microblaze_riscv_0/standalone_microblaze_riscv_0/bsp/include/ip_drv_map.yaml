@@ -1,0 +1,9 @@
+axi_btn_gpio_0:
+- axi_gpio
+- gpio
+axi_uartlite_0:
+- axi_uartlite
+- uartlite
+myip_pwm_4096step_0:
+- myip_pwm_4096step
+- None

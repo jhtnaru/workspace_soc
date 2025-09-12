@@ -1,6 +1,6 @@
-#line 1 "../platform_watch/hw/sdt/system-top.dts"
+#line 1 "../platform_pwm_4096step/hw/sdt/system-top.dts"
 /dts-v1/;
-#line 1 "../platform_watch/hw/sdt/pl.dtsi"
+#line 1 "../platform_pwm_4096step/hw/sdt/pl.dtsi"
 / {
 	cpus_microblaze_riscv_0: cpus_microblaze_riscv@0 {
 		#cpu-mask-cells = <1>;
@@ -183,31 +183,6 @@
 			xlnx,name = "axi_btn_gpio_0";
 			xlnx,all-inputs = <1>;
 		};
-		axi_iic_0: i2c@40800000 {
-			xlnx,iic-freq-khz = <100>;
-			compatible = "xlnx,axi-iic-2.1" , "xlnx,xps-iic-2.00.a";
-			xlnx,scl-inertial-delay = <0>;
-			clock-frequency = <100000000>;
-			xlnx,rable = <0>;
-			xlnx,ip-name = "axi_iic";
-			xlnx,disable-setup-violation-check = <0>;
-			reg = <0x40800000 0x10000>;
-			clocks = <&clk_bus_0>;
-			xlnx,gpo-width = <1>;
-			xlnx,edk-iptype = "PERIPHERAL";
-			xlnx,static-timing-reg-width = <0>;
-			xlnx,sda-level = <1>;
-			status = "okay";
-			xlnx,ten-bit-adr = <0>;
-			xlnx,default-value = <0x0>;
-			xlnx,iic-board-interface = "Custom";
-			xlnx,timing-reg-width = <32>;
-			xlnx,iic-freq = <100000>;
-			xlnx,smbus-pmbus-host = <0>;
-			xlnx,name = "axi_iic_0";
-			xlnx,axi-aclk-freq-mhz = <100>;
-			xlnx,sda-inertial-delay = <0>;
-		};
 		axi_uartlite_0: serial@40600000 {
 			compatible = "xlnx,axi-uartlite-2.0" , "xlnx,xps-uartlite-1.00.a";
 			clock-frequency = <100000000>;
@@ -297,20 +272,20 @@
 			xlnx,bram-awidth = <32>;
 			xlnx,lmb-awidth = <32>;
 		};
-		myip_watch_0: myip_watch@44a00000 {
+		myip_pwm_4096step_0: myip_pwm_4096step@44a00000 {
 			xlnx,rable = <0>;
 			xlnx,s00-axi-data-width = <32>;
-			compatible = "xlnx,myip-watch-1.0";
+			compatible = "xlnx,myip-pwm-4096step-1.0";
 			status = "okay";
 			xlnx,s00-axi-addr-width = <5>;
-			xlnx,ip-name = "myip_watch";
+			xlnx,ip-name = "myip_pwm_4096step";
 			xlnx,edk-iptype = "PERIPHERAL";
 			reg = <0x44a00000 0x10000>;
-			xlnx,name = "myip_watch_0";
+			xlnx,name = "myip_pwm_4096step_0";
 		};
 	};
 };
-#line 3 "../platform_watch/hw/sdt/system-top.dts"
+#line 3 "../platform_pwm_4096step/hw/sdt/system-top.dts"
 / {
 	board = "basys3";
 	compatible = "xlnx,basys3";
@@ -331,15 +306,13 @@
 	};
 	aliases {
 		serial0 = &axi_uartlite_0;
-		i2c0 = &axi_iic_0;
 	};
 	cpus_microblaze_riscv_0: cpus_microblaze_riscv@0 {
 		address-map = <0x00000000 &microblaze_riscv_0_local_memory_dlmb_bram_if_cntlr_memory 0x00000000 0x20000>,
 			      <0x00000000 &microblaze_riscv_0_local_memory_dlmb_bram_if_cntlr 0x00000000 0x20000>,
 			      <0x40000000 &axi_btn_gpio_0 0x40000000 0x10000>,
 			      <0x40600000 &axi_uartlite_0 0x40600000 0x10000>,
-			      <0x40800000 &axi_iic_0 0x40800000 0x10000>,
-			      <0x44a00000 &myip_watch_0 0x44a00000 0x10000>;
+			      <0x44a00000 &myip_pwm_4096step_0 0x44a00000 0x10000>;
 		#ranges-address-cells = <0x1>;
 		#ranges-size-cells = <0x1>;
 	};
