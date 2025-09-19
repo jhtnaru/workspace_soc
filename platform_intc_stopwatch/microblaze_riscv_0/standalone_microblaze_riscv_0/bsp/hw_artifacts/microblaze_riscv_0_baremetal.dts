@@ -222,7 +222,7 @@
                         xlnx,has-fast = <0x1>;
                         xlnx,ivar-rst-val = <0x10>;
                         interrupt-controller;
-                        xlnx,async-intr = <0xfffffffe>;
+                        xlnx,async-intr = <0xfffffffc>;
                         xlnx,name = "microblaze_riscv_0_axi_intc";
                         phandle = <0x6>;
                 };
@@ -291,10 +291,12 @@
                 };
 
                 axi_uartlite_0: serial@40600000 {
+                        interrupts = <0x1 0x0>;
                         compatible = "xlnx,axi-uartlite-2.0", "xlnx,xps-uartlite-1.00.a";
                         clock-frequency = <0x5f5e100>;
                         xlnx,uartlite-board-interface = "usb_uart";
                         xlnx,s-axi-aclk-freq-hz-d = <0x64>;
+                        interrupt-parent = <&microblaze_riscv_0_axi_intc>;
                         xlnx,rable = <0x0>;
                         xlnx,ip-name = "axi_uartlite";
                         reg = <0x40600000 0x10000>;
@@ -306,6 +308,7 @@
                         xlnx,odd-parity = <0x0>;
                         status = "okay";
                         xlnx,use-board-flow;
+                        interrupt-names = "interrupt";
                         xlnx,name = "axi_uartlite_0";
                         xlnx,data-bits = <0x8>;
                         xlnx,parity = "No_Parity";
