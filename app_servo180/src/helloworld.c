@@ -97,14 +97,13 @@ int main()
                 printf("Servo Mode %d\n", servo180_inst[0]);
             }
             else if (btn_value == 0b0100) {
-                if (servo180_inst[2] == 90) servo180_inst[2] = 180;
-                else if (servo180_inst[2] == 180) servo180_inst[2] = 90;
+                if (servo180_inst[2] >= 180) servo180_inst[2] = 0;
+                else servo180_inst[2] = servo180_inst[2] + 10;
                 printf("Max Angle %d\n", servo180_inst[2]);
             }
             else if (btn_value == 0b1000) {
                 
             }
-
             btn_value = 0;
             btn_valid = 0;
         }

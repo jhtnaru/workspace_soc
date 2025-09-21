@@ -1,6 +1,6 @@
-#line 1 "../platform_fan_motor/hw/sdt/system-top.dts"
+#line 1 "../platform_servo180/hw/sdt/system-top.dts"
 /dts-v1/;
-#line 1 "../platform_fan_motor/hw/sdt/pl.dtsi"
+#line 1 "../platform_servo180/hw/sdt/pl.dtsi"
 / {
 	cpus_microblaze_riscv_0: cpus_microblaze_riscv@0 {
 		#cpu-mask-cells = <1>;
@@ -159,7 +159,7 @@
 			#interrupt-cells = <2>;
 			xlnx,sense-of-irq-edge-type = "Rising";
 			xlnx,edk-special = "INTR_CTRL";
-			xlnx,kind-of-intr = <0x2>;
+			xlnx,kind-of-intr = <0x1>;
 			xlnx,kind-of-edge = <0xffffffff>;
 			xlnx,irq-is-level = <1>;
 			xlnx,has-ivr = <1>;
@@ -198,7 +198,7 @@
 		};
 		axi_btn_gpio_0: gpio@40000000 {
 			#interrupt-cells = <2>;
-			interrupts = < 0 2 >;
+			interrupts = < 1 2 >;
 			xlnx,gpio-board-interface = "push_buttons_4bits";
 			compatible = "xlnx,axi-gpio-2.0" , "xlnx,xps-gpio-1.00.a";
 			xlnx,all-outputs = <0>;
@@ -231,7 +231,7 @@
 			xlnx,all-inputs = <1>;
 		};
 		axi_uartlite_0: serial@40600000 {
-			interrupts = < 1 0 >;
+			interrupts = < 0 0 >;
 			compatible = "xlnx,axi-uartlite-2.0" , "xlnx,xps-uartlite-1.00.a";
 			clock-frequency = <100000000>;
 			xlnx,uartlite-board-interface = "usb_uart";
@@ -322,20 +322,20 @@
 			xlnx,bram-awidth = <32>;
 			xlnx,lmb-awidth = <32>;
 		};
-		myip_fan_0: myip_fan@44a00000 {
+		myip_servo180_0: myip_servo180@44a00000 {
 			xlnx,rable = <0>;
 			xlnx,s00-axi-data-width = <32>;
-			compatible = "xlnx,myip-fan-1.0";
+			compatible = "xlnx,myip-servo180-1.0";
 			status = "okay";
 			xlnx,s00-axi-addr-width = <5>;
-			xlnx,ip-name = "myip_fan";
+			xlnx,ip-name = "myip_servo180";
 			xlnx,edk-iptype = "PERIPHERAL";
 			reg = <0x44a00000 0x10000>;
-			xlnx,name = "myip_fan_0";
+			xlnx,name = "myip_servo180_0";
 		};
 	};
 };
-#line 3 "../platform_fan_motor/hw/sdt/system-top.dts"
+#line 3 "../platform_servo180/hw/sdt/system-top.dts"
 / {
 	board = "basys3";
 	compatible = "xlnx,basys3";
@@ -363,7 +363,7 @@
 			      <0x40000000 &axi_btn_gpio_0 0x40000000 0x10000>,
 			      <0x40600000 &axi_uartlite_0 0x40600000 0x10000>,
 			      <0x41200000 &microblaze_riscv_0_axi_intc 0x41200000 0x10000>,
-			      <0x44a00000 &myip_fan_0 0x44a00000 0x10000>;
+			      <0x44a00000 &myip_servo180_0 0x44a00000 0x10000>;
 		#ranges-address-cells = <0x1>;
 		#ranges-size-cells = <0x1>;
 	};

@@ -1,5 +1,8 @@
 [
-  "/home/user16/workspace_soc/platform_rtc_read/export/platform_rtc_read",
   "/home/user16/workspace_soc/platform_stepper/export/platform_stepper",
-  "/home/user16/workspace_soc/platform_fan_motor/export/platform_fan_motor"
+  "/home/user16/workspace_soc/platform_sensor_dgt/export/platform_sensor_dgt",
+  "/home/user16/workspace_soc/platform_sensor_adc/export/platform_sensor_adc",
+  "/home/user16/workspace_soc/platform_fan_motor/export/platform_fan_motor",
+  "/home/user16/workspace_soc/platform_rtc_read/export/platform_rtc_read",
+  "/home/user16/workspace_soc/platform_servo180/export/platform_servo180"
 ]
