@@ -1,0 +1,30 @@
+axi_btn_gpio_0:
+- axi_gpio
+- gpio
+axi_uartlite_0:
+- axi_uartlite
+- uartlite
+microblaze_riscv_0_axi_intc:
+- axi_intc
+- intc
+myip_servo_0:
+- myip_servo
+- None
+myip_servo_1:
+- myip_servo
+- None
+myip_servo_2:
+- myip_servo
+- None
+myip_servo_3:
+- myip_servo
+- None
+myip_servo_4:
+- myip_servo
+- None
+myip_servo_5:
+- myip_servo
+- None
+myip_servo_6:
+- myip_servo
+- None

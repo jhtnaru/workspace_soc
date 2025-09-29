@@ -1,4 +1,4 @@
-# 2025-09-21T16:40:41.614974
+# 2025-09-23T12:39:49.353170
 import vitis
 
 client = vitis.create_client()
@@ -8,14 +8,18 @@ client.delete_component(name="app_servo180")
 
 client.delete_component(name="platform_servo180")
 
-platform = client.create_platform_component(name = "platform_servo180",hw_design = "$COMPONENT_LOCATION/../../workspace_vivado/basys3_exam/soc_servo180_wrapper.xsa",os = "standalone",cpu = "microblaze_riscv_0",domain_name = "standalone_microblaze_riscv_0")
+platform = client.create_platform_component(name = "platform_servo",hw_design = "$COMPONENT_LOCATION/../../workspace_vivado/basys3_exam/soc_servo_wrapper.xsa",os = "standalone",cpu = "microblaze_riscv_0",domain_name = "standalone_microblaze_riscv_0")
 
-comp = client.create_app_component(name="app_servo180",platform = "$COMPONENT_LOCATION/../platform_servo180/export/platform_servo180/platform_servo180.xpfm",domain = "standalone_microblaze_riscv_0",template = "hello_world")
+comp = client.create_app_component(name="app_servo",platform = "$COMPONENT_LOCATION/../platform_servo/export/platform_servo/platform_servo.xpfm",domain = "standalone_microblaze_riscv_0",template = "hello_world")
 
-platform = client.get_component(name="platform_servo180")
+platform = client.get_component(name="platform_servo")
 status = platform.build()
 
-comp = client.get_component(name="app_servo180")
+comp = client.get_component(name="app_servo")
+comp.build()
+
+status = platform.build()
+
 comp.build()
 
 status = platform.build()
